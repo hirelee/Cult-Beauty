@@ -1,0 +1,44 @@
+.site-search-form
+    height 35px 
+    width 292px
+    position absolute
+    bottom 16px
+    left 50%
+    margin-left -145px
+    border 1px solid rgba(0,0,0,0.3)
+    .form-submit-button
+        height 37px
+        width 37px
+        float right
+        cursor pointer
+        margin-top -1px
+        background url('fontawesome-search-white.svg') center 40%/20px no-repeat;
+        background-color black
+    input[type="text"]     
+        font-family "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif, "Times New Roman", Times, serif;
+        font-size 14px
+        letter-spacing .1px
+        padding 0px
+        width 240px
+        padding-left 15px
+        height 35px
+        border 0px solid black
+        transition-property border
+        transition-duration 0.4s
+        transition-timing-function ease-out
+        transition-delay 0s
+        outline none
+        color black
+    ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: rgba(0,0,0,0.3);
+        opacity: 1; /* Firefox */
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: rgba(0,0,0,0.3);
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: rgba(0,0,0,0.3);
+    }
+// General
+.clear-float
+    clear both
