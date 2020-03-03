@@ -3,15 +3,16 @@ import * as React from "react";
 import './SiteTopBar.styl'; 
 
 // Types
-type TestProps = {
-    test:String
+type TopBarProps = {
+    getToggleRegions:Boolean,
+    toggleRegions
 }
 
 //
 // Function
 //
 
-const SiteTopBar: React.FunctionComponent<TestProps> = (props:any) => {
+const SiteTopBar: React.FunctionComponent<TopBarProps> = (props:any) => {
     // Set States
     const [getActiveRegion, setActiveRegion]= React.useState({ id:'gb', label:'United Kingdom', currency:{ code:'GBP',symbol:'£' }});
     const [getToggleRegions, setToggleRegions] = React.useState(false);
@@ -29,13 +30,12 @@ const SiteTopBar: React.FunctionComponent<TestProps> = (props:any) => {
         <>
             <div className="site-top-bar">
                 <div className="site-top-bar-content">
-                    <div className="top-bar-region-select-button">
+                    <div className="top-bar-region-select-button" onClick={event => props.toggleRegions(true)}>
                         <img className="button-flag" src={`https://d10qoa1dy3vloz.cloudfront.net/public/img/flags/${getActiveRegion.id.toLowerCase()}.svg?m=2laxyi`}></img>
                         <div className="button-text">
                             Shipping to: <b>{getActiveRegion.label}</b> {getActiveRegion.currency.code} {getActiveRegion.currency.symbol} <div className="text-icon"></div>
                         </div>
                     </div>
-
                     <div className="top-bar-links">
                         <ol>
                             <li className="links-help"><div className="icon"></div><b>Help</b></li>

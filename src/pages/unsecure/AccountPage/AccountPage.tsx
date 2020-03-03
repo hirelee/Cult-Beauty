@@ -2,8 +2,8 @@ import * as React from "react";
 // Style
 import './AccountPage.styl'; 
 // Components
-import AccountMenuComp from "../../../component/AccountMenuComp/AccountMenuComp";
-import AccountAddressBookComp from "../../../component/AccountAddressBookComp/AccountAddressBookComp";
+import AccountMenuComp from "../../../component/AccountMenu/AccountMenu";
+import AccountAddressBookComp from "../../../component/AccountAddressBook/AccountAddressBook";
 // Json
 import SiteNavigation from "../../../component/SiteNavigation/SiteNavigation";
 import SiteSearch from "../../../component/SiteSearch/SiteSearch";
@@ -22,10 +22,7 @@ type TestProps = {
 //
 
 const AccountPage: React.FunctionComponent<TestProps> = (props:any) => {
-    // Set States
-    const [getActiveRegion, setActiveRegion]= React.useState({ id:'gb', label:'United Kingdom', currency:{ code:'GBP',symbol:'£' }});
-    const [getToggleRegions, setToggleRegions] = React.useState(false);
-    const [getUserCookie, setUserCookie] = React.useState({ firstName:'Lee', lastName:'Marshall'});
+        
     //
     // Use Effect
     //
@@ -37,7 +34,7 @@ const AccountPage: React.FunctionComponent<TestProps> = (props:any) => {
     // Return
     return (
         <>
-            <SiteHeader test=""/>
+            <SiteHeader/>
             <div className="account-page">
                 <div className="account-page-free-shipping">
                     <b>FREE SHIPPING</b> <i>on all orders over £15</i>

@@ -4,11 +4,16 @@ import './SiteRegionSelect.styl';
 // Json
 import regions from '../../json/regions';
 
+// Types
+type SiteRegionProps = {
+    toggleRegions
+}
+
 //
 // Function
 //
 
-const SiteRegionSelect: React.FunctionComponent = (props:any) => {
+const SiteRegionSelect: React.FunctionComponent<SiteRegionProps> = (props:any) => {
     // Set States
     const [getRegions, setRegions] = React.useState(regions);
     const [getActiveRegion, setActiveRegion]= React.useState({ id:'gb', label:'United Kingdom', currency:{ code:'GBP',symbol:'£' }});
@@ -28,11 +33,11 @@ const SiteRegionSelect: React.FunctionComponent = (props:any) => {
             <div className="site-region-overlay"></div>
             {/** Panel */}
             <div className="site-region-panel">
-                <div className="panel-close-button">
+                <div className="panel-close-button" onClick={event => props.toggleRegions()}>
                     <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
                         <g>
-                            <line y1="0" x1="20" y2="20" x2="0" stroke-width="1.5" stroke="#000" fill="none"></line>
-                            <line y1="0" x1="0" y2="20" x2="20" stroke-width="1.5" stroke="#000" fill="none"></line>
+                            <line y1="0" x1="20" y2="20" x2="0" strokeWidth="1.5" stroke="#000" fill="none"></line>
+                            <line y1="0" x1="0" y2="20" x2="20" strokeWidth="1.5" stroke="#000" fill="none"></line>
                         </g>
                     </svg>
                 </div>

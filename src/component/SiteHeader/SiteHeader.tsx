@@ -7,15 +7,14 @@ import SiteSearch from "../SiteSearch/SiteSearch";
 import SiteNavigation from "../SiteNavigation/SiteNavigation";
 
 // Types
-type TestProps = {
-    test:String
+type HeaderProps = {
 }
 
 //
 // Function
 //
 
-const SiteHeader: React.FunctionComponent<TestProps> = (props:any) => {
+const SiteHeader: React.FunctionComponent<HeaderProps> = (props:any) => {
     // Set States
     const [getActiveRegion, setActiveRegion]= React.useState({ id:'gb', label:'United Kingdom', currency:{ code:'GBP',symbol:'£' }});
     const [getToggleRegions, setToggleRegions] = React.useState(false);
@@ -29,11 +28,24 @@ const SiteHeader: React.FunctionComponent<TestProps> = (props:any) => {
         // No Functionality  
     },[]);
   
+    //
+    // Toggle Regions 
+    // 
+
+    const toggleRegions = (el) => {
+        // Check
+        if(getToggleRegions) {
+            setToggleRegions(false);
+        } else {
+            setToggleRegions(true);
+        }
+    }
+
     // Return
     return (
         <>
-            <SiteTopBar test=""/>
-            { getToggleRegions && <SiteRegionSelect/>}
+            <SiteTopBar getToggleRegions={ getToggleRegions } toggleRegions={ toggleRegions }/>
+            { getToggleRegions && <SiteRegionSelect toggleRegions={toggleRegions} />}
             <div className="header">
                 <div className="header-container">
                     <div className="header-site-logo"></div>

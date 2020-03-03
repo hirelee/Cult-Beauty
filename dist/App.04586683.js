@@ -36038,12 +36038,12 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"component/AccountMenuComp/AccountMenuComp.styl":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"component/AccountMenu/AccountMenu.styl":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"component/AccountMenuComp/AccountMenuComp.tsx":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"component/AccountMenu/AccountMenu.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -36063,7 +36063,7 @@ Object.defineProperty(exports, "__esModule", {
 var React = __importStar(require("react")); // Style
 
 
-require("./AccountMenuComp.styl"); //
+require("./AccountMenu.styl"); //
 // Function
 //
 
@@ -36090,12 +36090,12 @@ var AccountMenuComp = function AccountMenuComp() {
 };
 
 exports.default = AccountMenuComp;
-},{"react":"../node_modules/react/index.js","./AccountMenuComp.styl":"component/AccountMenuComp/AccountMenuComp.styl"}],"component/AccountAddressBookComp/AccountAddressBookComp.styl":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./AccountMenu.styl":"component/AccountMenu/AccountMenu.styl"}],"component/AccountAddressBook/AccountAddressBook.styl":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"component/AccountAddressBookComp/AccountAddressBookComp.tsx":[function(require,module,exports) {
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"component/AccountAddressBook/AccountAddressBook.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -36115,7 +36115,7 @@ Object.defineProperty(exports, "__esModule", {
 var React = __importStar(require("react")); // Style
 
 
-require("./AccountAddressBookComp.styl"); //
+require("./AccountAddressBook.styl"); //
 // Function
 //
 
@@ -36192,7 +36192,7 @@ var AccountAddressBookComp = function AccountAddressBookComp() {
 };
 
 exports.default = AccountAddressBookComp;
-},{"react":"../node_modules/react/index.js","./AccountAddressBookComp.styl":"component/AccountAddressBookComp/AccountAddressBookComp.styl"}],"component/SiteFooter/SiteFooter.styl":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./AccountAddressBook.styl":"component/AccountAddressBook/AccountAddressBook.styl"}],"component/SiteFooter/SiteFooter.styl":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -37907,7 +37907,10 @@ var SiteTopBar = function SiteTopBar(props) {
   }, React.createElement("div", {
     className: "site-top-bar-content"
   }, React.createElement("div", {
-    className: "top-bar-region-select-button"
+    className: "top-bar-region-select-button",
+    onClick: function onClick(event) {
+      return props.toggleRegions(true);
+    }
   }, React.createElement("img", {
     className: "button-flag",
     src: "https://d10qoa1dy3vloz.cloudfront.net/public/img/flags/" + getActiveRegion.id.toLowerCase() + ".svg?m=2laxyi"
@@ -40374,7 +40377,10 @@ var SiteRegionSelect = function SiteRegionSelect(props) {
   }), React.createElement("div", {
     className: "site-region-panel"
   }, React.createElement("div", {
-    className: "panel-close-button"
+    className: "panel-close-button",
+    onClick: function onClick(event) {
+      return props.toggleRegions();
+    }
   }, React.createElement("svg", {
     width: "20",
     height: "20",
@@ -40384,7 +40390,7 @@ var SiteRegionSelect = function SiteRegionSelect(props) {
     x1: "20",
     y2: "20",
     x2: "0",
-    "stroke-width": "1.5",
+    strokeWidth: "1.5",
     stroke: "#000",
     fill: "none"
   }), React.createElement("line", {
@@ -40392,7 +40398,7 @@ var SiteRegionSelect = function SiteRegionSelect(props) {
     x1: "0",
     y2: "20",
     x2: "20",
-    "stroke-width": "1.5",
+    strokeWidth: "1.5",
     stroke: "#000",
     fill: "none"
   })))), React.createElement("div", {
@@ -40554,11 +40560,26 @@ var SiteHeader = function SiteHeader(props) {
 
 
   React.useEffect(function () {// No Functionality  
-  }, []); // Return
+  }, []); //
+  // Toggle Regions 
+  // 
+
+  var toggleRegions = function toggleRegions(el) {
+    // Check
+    if (getToggleRegions) {
+      setToggleRegions(false);
+    } else {
+      setToggleRegions(true);
+    }
+  }; // Return
+
 
   return React.createElement(React.Fragment, null, React.createElement(SiteTopBar_1.default, {
-    test: ""
-  }), getToggleRegions && React.createElement(SiteRegionSelect_1.default, null), React.createElement("div", {
+    getToggleRegions: getToggleRegions,
+    toggleRegions: toggleRegions
+  }), getToggleRegions && React.createElement(SiteRegionSelect_1.default, {
+    toggleRegions: toggleRegions
+  }), React.createElement("div", {
     className: "header"
   }, React.createElement("div", {
     className: "header-container"
@@ -40625,9 +40646,9 @@ var React = __importStar(require("react")); // Style
 require("./AccountPage.styl"); // Components
 
 
-var AccountMenuComp_1 = __importDefault(require("../../../component/AccountMenuComp/AccountMenuComp"));
+var AccountMenu_1 = __importDefault(require("../../../component/AccountMenu/AccountMenu"));
 
-var AccountAddressBookComp_1 = __importDefault(require("../../../component/AccountAddressBookComp/AccountAddressBookComp"));
+var AccountAddressBook_1 = __importDefault(require("../../../component/AccountAddressBook/AccountAddressBook"));
 
 var SiteFooter_1 = __importDefault(require("../../../component/SiteFooter/SiteFooter"));
 
@@ -40637,38 +40658,13 @@ var SiteHeader_1 = __importDefault(require("../../../component/SiteHeader/SiteHe
 
 
 var AccountPage = function AccountPage(props) {
-  // Set States
-  var _a = React.useState({
-    id: 'gb',
-    label: 'United Kingdom',
-    currency: {
-      code: 'GBP',
-      symbol: '£'
-    }
-  }),
-      getActiveRegion = _a[0],
-      setActiveRegion = _a[1];
-
-  var _b = React.useState(false),
-      getToggleRegions = _b[0],
-      setToggleRegions = _b[1];
-
-  var _c = React.useState({
-    firstName: 'Lee',
-    lastName: 'Marshall'
-  }),
-      getUserCookie = _c[0],
-      setUserCookie = _c[1]; //
+  //
   // Use Effect
   //
-
-
   React.useEffect(function () {// No Functionality  
   }, []); // Return
 
-  return React.createElement(React.Fragment, null, React.createElement(SiteHeader_1.default, {
-    test: ""
-  }), React.createElement("div", {
+  return React.createElement(React.Fragment, null, React.createElement(SiteHeader_1.default, null), React.createElement("div", {
     className: "account-page"
   }, React.createElement("div", {
     className: "account-page-free-shipping"
@@ -40676,15 +40672,15 @@ var AccountPage = function AccountPage(props) {
     className: "account-page-content"
   }, React.createElement("div", {
     className: "page-menu"
-  }, React.createElement(AccountMenuComp_1.default, null)), React.createElement("div", {
+  }, React.createElement(AccountMenu_1.default, null)), React.createElement("div", {
     className: "page-view"
-  }, React.createElement(AccountAddressBookComp_1.default, null)), React.createElement("div", {
+  }, React.createElement(AccountAddressBook_1.default, null)), React.createElement("div", {
     className: "clear-float"
   }))), React.createElement(SiteFooter_1.default, null));
 };
 
 exports.default = AccountPage;
-},{"react":"../node_modules/react/index.js","./AccountPage.styl":"pages/unsecure/AccountPage/AccountPage.styl","../../../component/AccountMenuComp/AccountMenuComp":"component/AccountMenuComp/AccountMenuComp.tsx","../../../component/AccountAddressBookComp/AccountAddressBookComp":"component/AccountAddressBookComp/AccountAddressBookComp.tsx","../../../component/SiteFooter/SiteFooter":"component/SiteFooter/SiteFooter.tsx","../../../component/SiteHeader/SiteHeader":"component/SiteHeader/SiteHeader.tsx"}],"pages/unsecure/router-unsecure.tsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./AccountPage.styl":"pages/unsecure/AccountPage/AccountPage.styl","../../../component/AccountMenu/AccountMenu":"component/AccountMenu/AccountMenu.tsx","../../../component/AccountAddressBook/AccountAddressBook":"component/AccountAddressBook/AccountAddressBook.tsx","../../../component/SiteFooter/SiteFooter":"component/SiteFooter/SiteFooter.tsx","../../../component/SiteHeader/SiteHeader":"component/SiteHeader/SiteHeader.tsx"}],"pages/unsecure/router-unsecure.tsx":[function(require,module,exports) {
 "use strict";
 
 var __importStar = this && this.__importStar || function (mod) {
@@ -40805,7 +40801,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61147" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54574" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
